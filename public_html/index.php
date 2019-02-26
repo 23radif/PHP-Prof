@@ -1,8 +1,6 @@
 <?php
 
 $link = mysqli_connect('localhost', 'root', '', 'gbphp');
-$sql = "SELECT id, url, size, name FROM images ;";
-$res = mysqli_query($link, $sql);
 
 $sql = "SELECT * FROM images ORDER BY CountClick DESC ;";
 $res = mysqli_query($link, $sql);

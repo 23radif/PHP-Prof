@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <title>{{ __TITLE }}</title>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script src="js/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="all"/>
+</head>
+<body>
+<div id="container" class="wrapper">
+    <div class="content-wrap">
+        <!-- Begin Header Wrapper -->
+        <div id="page-top">
+            <div id="header-wrapper">
+                <!-- Begin Header -->
+                <div id="header">
+                    <!-- Logo -->
+                    <!-- Begin Menu -->
+                    <div id="menu-wrapper">
+                        <div id="smoothmenu1" class="ddsmoothmenu">
+                            <ul>
+                                <li><a href="?">Главная</a></li>
+                                <li><a href="?page=goods">Товары</a></li>
+                                <li><a href="?page=backet">Корзина (
+                                        <span id="bac">{{ __COUNT }}</span>
+                                        )</a></li>
+                                <li><a href="?page=calculator">Калькулятор</a></li>
+                                <li><a href="?page=addFile">Файлы</a></li>
+                                <li><a href="?page=users">Пользователи</a></li>
+                                <li><a href="?page=registration">Регистрация</a></li>
+                                <li><a href="?page=auth">Авторизоваться</a></li>
+                                <li><a href="?page=personalArea">Личный кабинет</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End Menu -->
+                </div>
+                <!-- End Header -->
+            </div>
+        </div>
+        <!-- End Header Wrapper -->
+        <!-- Begin Slider -->
+        <div id="piecemaker-container">
+            {{ ___MSG_ |raw }}
+            <div id="piecemaker, contentJs">
+                {{ CONTENT |raw }}
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="push"></div>
+    </div>
+    <!-- Begin Footer -->
+    <div id="footer-wrapper">
+        <div id="footer">
+            <div id="footer-content">
+                <!-- Begin Copyright -->
+                <div id="copyright">
+
+                </div>
+                <!-- End Copyright -->
+                <!-- Begin Social Icons -->
+                <div id="socials">
+
+                </div>
+                <!-- End Social Icons -->
+            </div>
+        </div>
+    </div>
+    <!-- End Footer -->
+</div>
+</body>
+</html>

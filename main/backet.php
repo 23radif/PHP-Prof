@@ -67,6 +67,11 @@ function add() {
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         echo count ($_SESSION['goods']);
         exit;
+//        $basketCount = 0;
+//        foreach ($_SESSION['goods'] as $val) {
+//            $basketCount += (int)$val['count'];
+//        }
+//        echo $basketCount;
     }
 
     $_SESSION['msg'] = $msg;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3307
--- Время создания: Фев 12 2019 г., 06:15
+-- Время создания: Фев 28 2019 г., 16:41
 -- Версия сервера: 8.0.12
 -- Версия PHP: 7.2.10
 
@@ -42,13 +42,45 @@ CREATE TABLE `goods` (
 --
 
 INSERT INTO `goods` (`id`, `name`, `info`, `price`, `url`, `CountClick`) VALUES
-(1, 'Товар 1', 'Это хороший товар.', 200, '1.jpg', 38),
-(2, 'Товар 2', 'Очень хороший товар.', 300, '2.jpg', 15),
+(1, 'Товар 1', 'Это хороший товар.', 200, '1.jpg', 51),
+(2, 'Товар 2', 'Очень хороший товар.', 300, '2.jpg', 20),
 (3, 'Товар 3', 'Товар.', 260, '3.jpg', 3),
-(4, 'Товар 4', 'Очень хороший товар. Очень хороший товар. Очень хороший товар. Очень хороший товар.', 4560, '4.jpg', 5),
+(4, 'Товар 4', 'Очень хороший товар. Очень хороший товар. Очень хороший товар. Очень хороший товар.', 4560, '4.jpg', 7),
 (5, 'Товар 5', 'Нужный товар.', 2345, '5.jpg', 1),
 (6, 'Товар 6', 'Новый товар.', 1355, '6.jpg', 1),
-(7, 'Товар 7', 'Самый новый товар.', 32445, '7.jpg', 5);
+(7, 'Товар 7', 'Самый новый товар.', 32445, '7.jpg', 5),
+(8, 'Товар 8', 'Превосходный товар', 214543, '8.jpg', 1),
+(9, 'Товар 9', 'Эксклюзивный товар', 1245, '9.jpg', 0),
+(10, 'Товар 10', 'Экзотический товар', 12, '10.jpg', 0),
+(11, 'Товар 11', 'Товар ищ', 1252354, '11.jpg', 0),
+(12, 'Товар 12', 'Товаровед', 2141, '12.jpg', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `images`
+--
+
+CREATE TABLE `images` (
+  `id` int(2) NOT NULL,
+  `url` varchar(30) NOT NULL,
+  `size` varchar(30) NOT NULL,
+  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `CountClick` int(3) NOT NULL COMMENT 'Количество переходов'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `images`
+--
+
+INSERT INTO `images` (`id`, `url`, `size`, `name`, `CountClick`) VALUES
+(1, '1.jpg', '767 x 529', '1', 21),
+(2, '2.jpg', '560 x 542', '2', 17),
+(3, '3.jpg', '1600 x 665', '3', 2),
+(4, '4.jpg', '560 x 261', '4', 4),
+(5, '5.jpg', '1600 x 438', '5', 0),
+(6, '6.jpg', '560 x 542', '6', 6),
+(7, '7.jpg', '597 x 724', '7', 11);
 
 -- --------------------------------------------------------
 
@@ -136,7 +168,8 @@ INSERT INTO `zakaz` (`id`, `fio`, `tel`, `address`, `info`, `login`, `status`) V
 (2, 'Фио', '+85056564', 'Мой адрес', '[{\"price\":\"300\",\"name\":\"Товар 2\",\"count\":2},{\"price\":\"230\",\"name\":\"Товар 3\",\"count\":3}]', '0', '0'),
 (5, 'Василий', '856463634', 'ул. Такая то', '[{\"price\":\"200\",\"name\":\"Товар 1\",\"priceSum\":600,\"count\":3,\"url\":\"1.jpg\"},{\"price\":\"300\",\"name\":\"Товар 2\",\"priceSum\":900,\"count\":3,\"url\":\"2.jpg\"}]', 'vas', '2'),
 (6, 'Вася', '898765', 'д356', '[{\"price\":\"300\",\"name\":\"Товар 2\",\"priceSum\":900,\"count\":3,\"url\":\"2.jpg\"},{\"price\":\"4560\",\"name\":\"Товар 4\",\"priceSum\":13680,\"count\":3,\"url\":\"4.jpg\"}]', 'vas', '0'),
-(8, 'sdgsd', 'gsdgsdg', 'dsgdg', '[{\"price\":\"300\",\"name\":\"Товар 2\",\"priceSum\":900,\"count\":3,\"url\":\"2.jpg\"},{\"price\":\"32445\",\"name\":\"Товар 7\",\"priceSum\":129780,\"count\":4,\"url\":\"7.jpg\"}]', '', '1');
+(8, 'sdgsd', 'gsdgsdg', 'dsgdg', '[{\"price\":\"300\",\"name\":\"Товар 2\",\"priceSum\":900,\"count\":3,\"url\":\"2.jpg\"},{\"price\":\"32445\",\"name\":\"Товар 7\",\"priceSum\":129780,\"count\":4,\"url\":\"7.jpg\"}]', '', '1'),
+(9, 'fsdds', 'dsdgsdg', 'sdgsdg', '[{\"price\":\"200\",\"name\":\"Товар 1\",\"priceSum\":400,\"count\":2,\"url\":\"1.jpg\"},{\"price\":\"4560\",\"name\":\"Товар 4\",\"priceSum\":18240,\"count\":4,\"url\":\"4.jpg\"}]', 'admin', '0');
 
 --
 -- Индексы сохранённых таблиц
@@ -146,6 +179,12 @@ INSERT INTO `zakaz` (`id`, `fio`, `tel`, `address`, `info`, `login`, `status`) V
 -- Индексы таблицы `goods`
 --
 ALTER TABLE `goods`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `images`
+--
+ALTER TABLE `images`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -174,7 +213,13 @@ ALTER TABLE `zakaz`
 -- AUTO_INCREMENT для таблицы `goods`
 --
 ALTER TABLE `goods`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT для таблицы `images`
+--
+ALTER TABLE `images`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT для таблицы `reviews`
@@ -192,7 +237,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `zakaz`
 --
 ALTER TABLE `zakaz`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

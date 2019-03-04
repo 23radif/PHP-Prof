@@ -2,11 +2,9 @@
 
 class C_Auth extends C_Page
 {
-    public function __construct()
-    {
-    }
-
-    public function index(){
+    public function action_index(){
+        //var_dump($_SESSION, $_GET, $_POST);
+        $this->title .= 'Authorization';
         $this->content = '';
         $this->content .= <<<php
     <h1>Авторизация</h1>
@@ -16,25 +14,25 @@ class C_Auth extends C_Page
         <input type="text" name="password" placeholder="password">
         <input type="submit">
     </form>
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 php;
         if (!empty($_SESSION['login'])){
             $this->content = <<<php
-    <a href="?act=auth&c=logout" style="cursor: pointer"><h3>Выход</h3></a>
+    <a href="?act=logout&c=auth" style="cursor: pointer"><h3>Выход</h3></a>
 php;
         }
         $this->content .= '<h5>Для доступа к дополнительным возможносям в ЛК, работе с файлами и пользователями авторизуйтесь 
 в качестве Администратора <br>(данные: login: admin, password: admin)</h5>';
         //fileLog('-auth');
         $_SESSION['title'] = 'Авторизация';
-        return $this->content;
     }
-    public function auth(){
-        $msg = 'Что-то пошло не так';
-        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+
+    public function action_auth(){
+        if ($this->IsPost()){
             if (empty($_POST['login']) || empty($_POST['password'])){
                 $msg = 'Не все параметры переданы';
-                header('Location: ?page=auth');
+                header('Location: ?c=auth');
             }
             $login = clearStr($_POST['login']);
 
@@ -50,26 +48,19 @@ php;
                     $_SESSION['isAdmin'] = 'YES';
                 }
                 $_SESSION['login'] = $login;
-                header('Location: ?page=personalArea');
+                header('Location: ?c=personalArea');
                 exit;
             }
         }
         $_SESSION['msg'] = $msg;
-        header('Location: ?page=auth');
+        header('Location: ?c=auth');
         exit;
     }
 
-    public function logout(){
+    public function action_logout(){
         session_destroy();
-        header('Location: ?page=auth');
+        header('Location: ?c=auth');
         exit;
     }
-
-    public function action_auth(){
-        $this->title .= 'Authorization';
-        $this->content = $this->index();
-        //$this->content = html_get("../v/v_single_page.php");
-    }
-
 }
 

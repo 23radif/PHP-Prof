@@ -1,6 +1,7 @@
 <?php
 class C_Registration extends C_Page {
     function action_index() {
+        $this->title .= 'Registration';
         if ($this->IsPost()) {
             $name = clearStr($_POST['name']);
             $dob = clearStr($_POST['dob']);

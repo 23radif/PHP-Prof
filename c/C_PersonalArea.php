@@ -4,6 +4,7 @@ class C_PersonalArea extends C_Page
 {
     public function action_index()
     {
+        $this->title .= 'Personal Area';
         if ($this->IsPost()) {
             $statusProduct = (int)clearStr($_POST['statusProduct']);
             $userProduct = clearStr($_POST['userProduct']);

@@ -36,7 +36,7 @@ class C_Registration extends C_Page {
             $_SESSION['msg'] = '';
             $_SESSION['login'] = $login;
 
-            header('Location: ?page=personalArea');
+            header('Location: ?с=personalArea');
             exit;
         }
 

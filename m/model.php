@@ -1,0 +1,1 @@
+<?phpfunction html_get($filename){    ob_start();    include "$filename";	return ob_get_clean(); //file_get_contents('data/text.txt');}/*function text_set($text){	file_put_contents('data/text.txt', $text);}*/
